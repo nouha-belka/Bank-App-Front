@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import { Routes, Route } from 'react-router-dom'
 import LoginPage from './Pages/LoginPage.jsx'
+import Standard from './Pages/Standard.jsx'
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
     <div className=''>
       <Routes>  
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/standard" element={<Standard />} />
       </Routes>
 
     </div>

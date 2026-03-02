@@ -68,7 +68,7 @@ const LoginPage = () => {
   return (
     // <div className=' bg-gray-200 flex flex-col items-center justify-center gap-4 mg-10 p-4'>
     <div className='h-screen bg-linear-to-r from-[#2A00B7] to-[#42006C] pt-1 '>
-      <div className=' w-[400px] sm:w-[400px]  md:w-[600px]  flex flex-col m-auto mt-50 pb-13 pt-13 bg-white rounded-lg'>
+      <div className=' w-[400px] sm:w-[400px] md:w-[600px]  flex flex-col m-auto mt-50 pb-13 pt-13 bg-white rounded-lg'>
         <div className='flex flex-col items-center gap-2.25 w-full'>
           <h1 className=' text-[#3C009D] font-bold text-3xl '>Login Page</h1>
           <p className=' text-gray-400 text-xl'>Don't have an account yet? 
