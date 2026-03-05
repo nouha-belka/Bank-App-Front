@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 import { useGetAccountsQuery } from '../account/accountsApiSlice';
+import { selectCurrentUser} from '../auth/authSlice';
 
 import {
   CheckSquareIcon,
@@ -9,15 +10,18 @@ import {
 } from "lucide-react";
 
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const MyAccountsSidebar = () => {
+
+    const user = useSelector(selectCurrentUser);
 
     const {
         data:accounts,
         isLoading,
         isError,
         error
-    } = useGetAccountsQuery(2);
+    } = useGetAccountsQuery(user.id);
     console.log(accounts);
 
     // const accounts = [

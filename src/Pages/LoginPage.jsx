@@ -41,7 +41,10 @@ const LoginPage = () => {
    
       const userData = await login({email, password}).unwrap();
       console.log(userData);
-      dispatch(setCredentials({...userData, email}));
+      dispatch(setCredentials({  
+        user: { id: userData.id, email }, // store ID and email
+        token: userData.token
+      }));
       setEmail('');
       setPassword('');
       navigate("/");
