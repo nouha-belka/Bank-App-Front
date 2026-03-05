@@ -1,19 +1,30 @@
 import React, { useState } from 'react'
 
+import { useGetAccountsQuery } from '../account/accountsApiSlice';
+
 import {
   CheckSquareIcon,
   ChevronDownIcon,
   ChevronRightIcon
 } from "lucide-react";
+
 import { Link } from 'react-router-dom';
 
 const MyAccountsSidebar = () => {
 
-    const dummyAccounts = [
-        { id: '1', accountBalance: '100', accountType: 'CHECKING', isActive: true },
-        { id: '2', accountBalance: '20000', accountType: 'SAVING', isActive: true },
-        { id: '3', accountBalance: '40', accountType: 'CHECKING', isActive: false },
-    ];
+    const {
+        data:accounts,
+        isLoading,
+        isError,
+        error
+    } = useGetAccountsQuery(2);
+    console.log(accounts);
+
+    // const accounts = [
+    //     { id: '1', balance: '100', accountType: 'CHECKING', isActive: true },
+    //     { id: '2', balance: '20000', accountType: 'SAVING', isActive: true },
+    //     { id: '3', balance: '40', accountType: 'CHECKING', isActive: false },
+    // ];
     
     const [showMyTasks, setShowMyTasks] = useState(false);
 
@@ -38,14 +49,14 @@ const MyAccountsSidebar = () => {
         {showMyTasks && ( 
             <div className="mt-2 pl-2">
                 <div className="space-y-1">
-                    {dummyAccounts.length === 0 ? (
+                    {accounts.length === 0 ? (
                         <div className="px-3 py-2 text-xs text-gray-500 dark:text-zinc-500 text-center">
                             No tasks assigned
                         </div>
                         
                     ) : (
 
-                        dummyAccounts.map((account) => ( 
+                        accounts.map((account) => ( 
                         <Link key={account.id} to="/"className="w-full rounded-lg transition-all duration-200 text-gray-700 dark:text-zinc-300 hover:bg-gray-100 dark:hover:bg-zinc-800 hover:text-black dark:hover:text-white">
                             <div className='flex items-start gap-2 px-3 py-2 w-full min-w-0'>
                                 {/* isActive Dot */}
@@ -53,7 +64,7 @@ const MyAccountsSidebar = () => {
                                 {/* Text */}
                                 <div className='flex-1 min-w-0'>
                                     <p className=' text-xs font-medium truncate '> {account.accountType}</p>
-                                    <p className=' text-xs text-gray-500 dark:text-zinc-500 lowercase'> {account.accountBalance} $</p>
+                                    <p className=' text-xs text-gray-500 dark:text-zinc-500 lowercase'> {account.balance} $</p>
                                 </div>
                             </div>
                         </Link>
