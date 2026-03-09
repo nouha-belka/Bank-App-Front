@@ -1,9 +1,10 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 import { assets  } from '../assets/assets';
-import { CopyPlus, LayoutDashboardIcon, Logs, ArrowLeftRight } from 'lucide-react'
+import { CopyPlus, LayoutDashboardIcon, Logs, ArrowLeftRight, LogOut } from 'lucide-react'
 import MyAccountsSidebar from './MyAccountsSidebar';
-
+import { useDispatch } from 'react-redux';
+import { logOut } from '../auth/authSlice';
 
 const SideBar = ({ isSidebarOpen, setIsSidebarOpen }) => {
 
@@ -13,6 +14,12 @@ const SideBar = ({ isSidebarOpen, setIsSidebarOpen }) => {
     { name: "New Transaction", href: "/newTransaction", icon: ArrowLeftRight },
     { name: "New Acccount", href: "/newAccount",icon: CopyPlus },
   ];
+
+  const dispatch = useDispatch();
+
+  const logOutButton = () =>{
+    dispatch(logOut());
+  };
 
   return (
     // dark:bg-zinc-900
@@ -42,6 +49,14 @@ const SideBar = ({ isSidebarOpen, setIsSidebarOpen }) => {
           </div>
           {/* My Accounts */}
           <MyAccountsSidebar />
+
+        </div>
+        {/* Log out */}
+        <div className='mt-auto px-3 mb-4'>
+          <div onClick={logOutButton} className=' flex items-center gap-3 py-2 px-4 text-gray-800 dark:text-zinc-100 cursor-pointer rounded hover:bg-gray-50 dark:hover:bg-zinc-800/60 '>
+            <LogOut size={16} />
+            Logout
+          </div>
         </div>
 
       </div>        

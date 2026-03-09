@@ -42,8 +42,10 @@ const MyAccountsSidebar = () => {
     <div className='mt-6 px-3'>
         {/* Header */}
         <div onClick={toggleMyTasks} className='flex items-center justify-between px-3 py-2 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-zinc-800'>
-            <CheckSquareIcon size={16} className='text-gray-500 dark:text-zinc-400'/>
-            <span className='text-sm font-medium text-gray-700 dark:text-zinc-300'>My Accounts</span>
+            <div className='flex gap-3 items-center'>
+                <CheckSquareIcon size={16} className='text-gray-500 dark:text-zinc-400'/>
+                <span className='text-sm font-medium text-gray-700 dark:text-zinc-300'>My Accounts</span>
+            </div>
             {showMyTasks ?
                 <ChevronRightIcon size={16} className='text-gray-500 dark:text-zinc-400'/> :
                 <ChevronDownIcon size={16} className='text-gray-500 dark:text-zinc-400'/>
@@ -55,7 +57,7 @@ const MyAccountsSidebar = () => {
                 <div className="space-y-1">
                     {accounts.length === 0 ? (
                         <div className="px-3 py-2 text-xs text-gray-500 dark:text-zinc-500 text-center">
-                            No tasks assigned
+                            No Accounts available
                         </div>
                         
                     ) : (
