@@ -4,6 +4,8 @@ import viteLogo from '/vite.svg'
 import { Routes, Route } from 'react-router-dom'
 import LoginPage from './Pages/LoginPage.jsx'
 import Standard from './Pages/Standard.jsx'
+import Unauthorized from './Pages/Unauthorized.jsx'
+import RequireAuth from './auth/RequireAuth.jsx'
 
 function App() {
   return (
@@ -11,7 +13,11 @@ function App() {
     <div className=''>
       <Routes>  
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/" element={<Standard />} />
+        <Route path="/unauthorized" element={<Unauthorized />} />
+
+        <Route element={<RequireAuth/>}>
+          <Route path="/" element={<Standard />} /> 
+        </Route>
       </Routes>
 
     </div>
